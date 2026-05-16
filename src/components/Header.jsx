@@ -1,5 +1,12 @@
+import "@fortawesome/fontawesome-free/css/all.css";
+
+
 export default function Header() {
     return (
-        <h1>Header</h1>
+        <header>
+            <i className="fa-solid fa-brain"></i>
+            <h1 className="title">QuizSnap</h1>
+            <p className="subtitle">Test your React knowledge</p>
+        </header>
     )
 }
