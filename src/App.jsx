@@ -1,5 +1,4 @@
 import { BrowserRouter } from "react-router-dom";
-import Routes from "./config/AppRoutes.jsx";
 import AppRoutes from "./config/AppRoutes.jsx";
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
