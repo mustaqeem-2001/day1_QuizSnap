@@ -6,7 +6,7 @@ export default function Header() {
         <header>
             <i className="fa-solid fa-brain"></i>
             <h1 className="title">QuizSnap</h1>
-            <p className="subtitle">Test your React knowledge</p>
+            <p className="subtitle fc-light">Test your React knowledge</p>
         </header>
     )
 }

@@ -23,6 +23,10 @@ p {
     margin: 0;
 }
 
+.fc-light {
+    color: #99a1af;
+}
+
 /* ------------------------------------------------------------------- */
 /* ------------------------------------------------------------------- */
 /* ------------------------------------------------------------------- */
@@ -44,11 +48,11 @@ header {
     background-color: #4f39f6;
 }
 
-.subtitle {
-    color: #99a1af;
+.subtitle {    
     font-size: 1.25rem;
     white-space: nowrap;
 }
+
 /* ------------------------------------------------------------------- */
 /* ------------------------------------------------------------------- */
 /* ------------------------------------------------------------------- */
@@ -62,13 +66,9 @@ main {
     align-items: center;
     flex-direction: column;
     padding: 1rem 0;
-    gap: 2.5rem;
+    gap: 1rem;
 }
 
-main button {
-    padding: 1rem;
-    width: 250px;
-}
 
 .container {
     display: flex;
@@ -88,10 +88,73 @@ main button {
     color: #09090b;
 }
 
+.fa-list-check {
+    font-size: 1.25rem;
+    color: #4f39f6;
+}
+
+.fa-bolt {
+    font-size: 1.25rem;
+    color: blue;
+}
+
+.fa-star {
+    color: gold;
+    font-size: 1.25rem;
+}
+
 .mt {
     margin-top: .5rem;
 }
 
+.fs {
+    font-size: .7rem;
+}
+
+.name-fieldset {
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+}
+
+.name-lebel {
+    font-weight: 600;
+}
+
+
+.name-input {
+    width: 100%;
+    padding: .5rem 0 .5rem .75rem;
+    border-radius: 6px;
+    border: 1px solid lightgray;
+    margin-top: 1rem;
+}
+
+.name-helper-text {
+    display: block;
+    margin-top: .5rem;
+}
+
+
+.button-link {
+    width: 100%;
+}
+
+main button {
+    padding: 1rem;
+    background-color:#4f39f6;
+    width: 100%;
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-size: 1.25rem;
+    margin-top: 1rem;
+}
+
+
+.btn-bolt-style {
+    color: white;
+    margin-right: .5rem;
+}
 
 
 /* ------------------------------------------------------------------- */
@@ -107,7 +170,7 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 2.5rem 1rem 1rem;
+    padding: 1rem 1rem 0;
     font-size: 1.15rem;
     margin-top: auto;
 }
@@ -126,7 +189,6 @@ footer {
     display: flex;
     gap: 1rem;
 }
-
 
 .copyright {
     position:relative;
