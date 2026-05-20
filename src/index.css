@@ -2,6 +2,15 @@ body {
     padding: 0;
     margin: 0;
     font-family: sans-serif, 'Lucida Sans', 'Lucida Sans Regular', Arial;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    max-width: 300px;
+    margin: auto;
+}
+
+#root {
+    flex: 1;
 }
 
 h1 {
@@ -14,6 +23,10 @@ p {
     margin: 0;
 }
 
+.fc-light {
+    color: #99a1af;
+}
+
 /* ------------------------------------------------------------------- */
 /* ------------------------------------------------------------------- */
 /* ------------------------------------------------------------------- */
@@ -24,7 +37,7 @@ p {
 
 header {
     text-align: center;
-    Padding-top: 2.5rem;
+    padding-top: 2.5rem;
 }
 
 .fa-brain {
@@ -35,11 +48,11 @@ header {
     background-color: #4f39f6;
 }
 
-.subtitle {
-    color: #99a1af;
+.subtitle {    
     font-size: 1.25rem;
     white-space: nowrap;
 }
+
 /* ------------------------------------------------------------------- */
 /* ------------------------------------------------------------------- */
 /* ------------------------------------------------------------------- */
@@ -48,10 +61,100 @@ header {
 /* ------------------------------------------------------------------- */
 /* Main Content */
 
+main {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 1rem 0;
+    gap: 1rem;
+}
 
 
+.container {
+    display: flex;
+    gap: 1rem;
+    margin: 1.25rem 0;
+}
+
+.container > div {
+    border-radius: 8px;
+    border: 1px solid rgba(197, 194, 194, 0.685);
+    text-align: center;  
+    white-space: nowrap;  
+    font-size: .75rem;
+    width: 85px;
+    padding: 1rem 0;
+    background-color: #ffffff;
+    color: #09090b;
+}
+
+.fa-list-check {
+    font-size: 1.25rem;
+    color: #4f39f6;
+}
+
+.fa-bolt {
+    font-size: 1.25rem;
+    color: blue;
+}
+
+.fa-star {
+    color: gold;
+    font-size: 1.25rem;
+}
+
+.mt {
+    margin-top: .5rem;
+}
+
+.fs {
+    font-size: .7rem;
+}
+
+.name-fieldset {
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+}
+
+.name-lebel {
+    font-weight: 600;
+}
 
 
+.name-input {
+    width: 100%;
+    padding: .5rem 0 .5rem .75rem;
+    border-radius: 6px;
+    border: 1px solid lightgray;
+    margin-top: 1rem;
+}
+
+.name-helper-text {
+    display: block;
+    margin-top: .5rem;
+}
+
+
+.button-link {
+    width: 100%;
+}
+
+main button {
+    padding: 1rem;
+    background-color:#4f39f6;
+    width: 100%;
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-size: 1.25rem;
+    margin-top: 1rem;
+}
+
+
+.btn-bolt-style {
+    color: white;
+    margin-right: .5rem;
+}
 
 
 /* ------------------------------------------------------------------- */
@@ -67,8 +170,9 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 2.5rem 1rem 1rem;
+    padding: 1rem 1rem 0;
     font-size: 1.15rem;
+    margin-top: auto;
 }
 
 
@@ -86,9 +190,8 @@ footer {
     gap: 1rem;
 }
 
-
 .copyright {
-    position: absolute;
+    position:relative;
     bottom: 0;
     padding: 1rem 0;
     white-space: nowrap;
