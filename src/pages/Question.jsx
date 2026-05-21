@@ -1,13 +1,14 @@
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 import quizData from "../data/quizData.js";
 import "@fortawesome/fontawesome-free/css/all.css";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { UserContext } from "../context/UserProvider.jsx";
 
 export default function Question() {
     const max = 5;
     const [ questionCount, setQuestionCount ] = useState(1);
-    const [ askedQuestions, setAskedQuestions ] = useState([]);
     const [ isClicked, setIsClicked ] = useState(null);
+    const { correctCount, setCorrectCount, setAskedQuestions } = useContext(UserContext);
 
     function randomiseQuestions() {
         const randomNumber = Math.floor(Math.random() * quizData.length);
@@ -16,51 +17,67 @@ export default function Question() {
 
     const [ question, setQuestion ] = useState(randomiseQuestions());
 
-    useEffect( () => {
+    function handleClick(optionId) {
+        setIsClicked(optionId);
+        
+        const isRight = Number(optionId) === question.answer || optionId === question.answer;
+        
+        if (isRight) {
+            setCorrectCount(prev => prev + 1);
+        }
+
+        // ONLY record the question in history when an option is actually clicked!
+        setAskedQuestions(prev => [
+            ...prev, 
+            { text: question.question, isCorrect: isRight }
+        ]);
+    }
+
+    useEffect(() => {
         setQuestion(randomiseQuestions());
         setIsClicked(null);
-    }, [questionCount])
-
+    }, [questionCount]);
 
     function userGuess(id) {
-        console.log(isClicked);
-        if (isClicked === null) {
-            return {};
+        if (isClicked === null) return {};
+        const stringId = String(id);
+        if (stringId === String(isClicked)) {
+            return String(isClicked) === String(question.answer) ? { backgroundColor: "green"} : { backgroundColor: "red"};
         }
-        if (isClicked === question.answer) {
+        if (stringId === String(question.answer) && String(isClicked) !== String(question.answer)) {
             return { backgroundColor: "green"};
         }
-        else {
-            return { backgroundColor: "red"};
-        }
+        return {};
     }
+
     return (
          <main>
             <div className="questions-header">
                 <span>Question {questionCount} of {max}</span>
             </div>
-            <section>
-                {
-                    <section key={question.id}>
-                        <p className="question">{question.question} </p>
-                        <section className="options">
-                            <button style={userGuess(question.options[0].id)} className="option" id={question.options[0].id} onClick={(e) => setIsClicked(e.target.id)}>{question.options[0].text}</button>
-                            <button style={userGuess(question.options[1].id)} className="option" id={question.options[1].id} onClick={(e) => setIsClicked(e.target.id)}>{question.options[1].text}</button>
-                            <button style={userGuess(question.options[2].id)} className="option" id={question.options[2].id} onClick={(e) => setIsClicked(e.target.id)}>{question.options[2].text}</button>
-                            <button style={userGuess(question.options[3].id)} className="option" id={question.options[3].id} onClick={(e) => setIsClicked(e.target.id)}>{question.options[3].text}</button>
-                        </section>
-                    </section>
-                }
-                
-            </section>
-            
+            <section key={question.id}>
+                <p className="question">{question.question} </p>
+                <div className="options">
+                    {question.options.map((option) => (
+                        <button 
+                            key={option.id}
+                            style={userGuess(option.id)} 
+                            className="option" 
+                            id={option.id} 
+                            onClick={(e) => handleClick(e.target.id)}
+                            disabled={isClicked !== null}
+                        >
+                            {option.text}
+                        </button>
+                    ))}
+                </div>
+            </section>            
             <Link to={questionCount === max ? "/summary" : "/question"} >
                 <button onClick={() => setQuestionCount(prev => prev + 1)}> 
                     {questionCount === max ? "Summary " : "Next Question"}
                     <i className="fa-solid fa-angle-right"></i>
                 </button>
-                
             </Link>
         </main>
-    )
+    );
 }
